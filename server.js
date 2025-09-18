@@ -4,9 +4,20 @@ const url = require('url');
 //call back function
 serveStatic = function (req, res) {
 	let fileName = '.' + url.parse(req.url).pathname;
-	res.writeHead(200, {'Content-Type': 'text/plain' });
-	res.write("Place holder where the data should be sent");
-	res.end();
+	fs.readFile(fileName, function(err, data){
+		if (err)
+		{
+			res.writeHead(404, {'Content-Type': 'text/plain' });
+			res.write('Error 404: resource ' + filename + ' not found');
+			res.end();
+		}
+		else{
+			res.writeHead(200, {'Content-Type': 'text/plain' });
+			res.write(data);
+			res.end();
+		}
+	}
+);
 }
  
 const myserver = http.createServer(serveStatic); //create a server object
