@@ -7,7 +7,7 @@ serveStatic = function (req, res) {
 	fs.readFile(fileName, function(err, data){
 		if (err)
 		{
-			res.writeHead(404, {'Content-Type': 'text/plain' });
+			res.writeHead(404, {'Content-Type': 'image/jpg' });
 			res.write('Error 404: resource not found');
 			res.end();
 		}
