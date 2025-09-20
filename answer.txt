@@ -2,5 +2,5 @@ Q1: We don't need sudo because the we are not listening on port 80 or any port t
 Q2: Lab.js first outputs to console the first given string and then tries to read the given file plain.txt and since the file is being read by an asynchronous callback function, the second given string after the code to read the file is outputted and finally the contents of the file are outputted to console once the file is read in the background
 Q3: THe given string appears before the content of the file because lab.js uses a callback function which allows the file to be read asynchronously. Reading the file takes longer than outputting the given string which allows it to be outputted before the file is read and then the content of the file is outputted
 Q4: Upon removing the toString('utf8') function, the output changes from human readable string to buffer or binary data. The toString(utf8) function converts the ASCII code or binary data to human readable string.
-Q5: Since we are sending the response in html, we don't need to use .toString
-Q6: We can build a server that can handle all requests by 
+Q5: Since we set the type of content in res.writeHead to plain text, the browser converts the bytes to human readable string and hence we don't need the toString('utf8') function. 
+Q6: We can build a server that can handle all requests by dynamically changing content type depending on the type of file being requested by the user. So we can make a string variable that changes depending on the url and use that to set the content type.
